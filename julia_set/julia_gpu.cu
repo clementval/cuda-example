@@ -39,7 +39,7 @@ __device__ int julia( int x, int y ) {
 __global__ void kernel(unsigned char* ptr) {
   int x = blockIdx.x;
   int y = blockIdx.y;
-
+  int offset = x + y * gridDim.x;
   int juliaValue = julia(x, y);
   ptr[offset * 4 + 0] = 255 * juliaValue;
   ptr[offset * 4 + 1] = 0;
